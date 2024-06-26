@@ -1,0 +1,11 @@
+{
+    "name":          "lega",
+    "description":   "A minimal D application.",
+    "authors":      ["Dmitry Ponyatov <dponyatov@gmail.com>"],
+    "copyright":     "Copyright © 2024, Dmitry Ponyatov <dponyatov@gmail.com>",
+    "homepage":      "https://github.com/ponyatov/lega",
+    "license":       "MIT",
+    "targetPath":    "bin",
+    "targetType":    "executable",
+    "dependencies": {}
+}

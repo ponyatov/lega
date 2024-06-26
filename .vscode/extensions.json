@@ -11,5 +11,15 @@
         // formatters
         "xaver.clang-format",
         "foxundermoon.shell-format",
+        // D
+        "webfreak.code-d",
+        "webfreak.dlang-bundle",
+        "webfreak.debug",
+        // C++
+        "ms-vscode.cpptools",
+        "jeff-hykin.better-cpp-syntax",
+        // "ms-vscode.cmake-tools",
+        // flex/bison
+        "daohong-emilio.yash",
     ]
 }
