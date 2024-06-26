@@ -3,4 +3,5 @@ rc
 bin/**
 ref/**
 tmp/**
+docs/**
 **/node_modules/**

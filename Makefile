@@ -47,7 +47,9 @@ CFLAGS += -I$(INC) -I$(TMP)
 
 # all
 .PHONY: all build run test
-all: run
+all: bin/$(MODULE)_cpp $(F)
+	$^
+	$(MAKE) run
 build: $(S)
 	$(BLD)
 run: $(S)
@@ -63,6 +65,10 @@ tmp/format_c: $(C) $(H)
 tmp/format_d: $(D)
 	$(RUN) dfmt -- -i $? && touch $@
 
+# rule
+bin/$(MODULE)_cpp: $(C) $(H)
+	$(CXX) $(CFLAGS) -o $@ $(C) $(L)
+
 # doc
 .PHONY: doc
 doc:
@@ -71,6 +77,10 @@ $(HOME)/doc/D/yazyk_programmirovaniya_d.pdf:
 	$(CURL) $@ https://www.k0d.cc/storage/books/D/yazyk_programmirovaniya_d.pdf
 $(HOME)/doc/D/Programming_in_D.pdf:
 	$(CURL) $@ http://ddili.org/ders/d.en/Programming_in_D.pdf
+
+.PHONY: doxy
+doxy: .doxygen
+	rm -rf docs ; doxygen $< 1>/dev/null
 
 # install
 .PHONY: install update ref gz

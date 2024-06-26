@@ -49,7 +49,7 @@ class obj {
 
     /// `<T:V>` header
     string head() {
-        return format("<%s:%s> @%x", tag(), val(), cast(size_t) this);
+        return format("<%s:%s> @%x", tag(), val(), this);
     }
 
     string dump(size_t depth = 0) {
