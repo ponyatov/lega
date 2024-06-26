@@ -13,7 +13,7 @@ H += $(wildcard inc/*.h*)
 F += $(wildcard lib/*.f*) lib/$(MODULE).ini
 
 # cfg
-CFLAGS += -I$(INC) -I$(TMP)
+CFLAGS += -I$(INC) -I$(TMP) -std=c++17
 
 # all
 .PHONY: all build run

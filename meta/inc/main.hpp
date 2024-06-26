@@ -7,6 +7,12 @@
 #include <stdlib.h>
 #include <assert.h>
 
+#include <string>
+#include <vector>
+#include <map>
+
+#include <typeinfo>
+
 /// @defgroup genc generated C++
 /// @brief sample code
 /// @{
@@ -28,7 +34,21 @@ extern void arg(int argc, char *argv);
 
 /// @brief root object
 class Object {
-    size_t ref = 0;
+    size_t rc = 0;        ///< reference counter
+    static Object *pool;  ///< global object pool
+    Object *next;         ///< @ref pool linked list
+
+    std::string value;                     ///< scalar number/value
+    std::vector<Object *> nest;            ///< nested elements
+    std::map<std::string, Object *> slot;  ///< attributes
+
+   public:
+    Object();
+    Object(std::string V);
+    virtual ~Object();
+
+    virtual std::string tag();  ///< class/type tag
+    virtual std::string val();  ///< stringified @ref value
 };
 
 class Primitive : public Object {};
@@ -45,9 +65,15 @@ class Stack : public Container {};
 class Map : public Container {};
 class Queue : public Container {};
 
-class Active : public Object {};
+class Active : public Object {
+   public:
+    Active(std::string V);
+};
 class Module : public Active {};
-class Process : public Active {};
+class Process : public Active {
+   public:
+    Process(std::string V);
+};
 class Function : public Active {};
 
 class IO : public Object {};

@@ -43,7 +43,7 @@ F += $(wildcard lib/*.f*) lib/$(MODULE).ini
 S += $(C) $(H) $(D) $(J) $(F)
 
 # cfg
-CFLAGS += -I$(INC) -I$(TMP)
+CFLAGS += -I$(INC) -I$(TMP) -std=c++17
 
 # all
 .PHONY: all build run test
