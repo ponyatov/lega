@@ -1,5 +1,5 @@
 # `lega`
-## legacy sw &amp; semantic design
+## script language for semantic design &amp; legacy sw analysis
 
 (c) Dmitry Ponyatov <<dponyatov@gmail.com>> 2023 MIT
 

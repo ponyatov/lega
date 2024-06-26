@@ -1,5 +1,9 @@
 # var
 MODULE  = $(notdir $(CURDIR))
+NOW     = $(shell date +%d%m%y)
+REL     = $(shell git rev-parse --short=4 HEAD)
+BRANCH  = $(shell git rev-parse --abbrev-ref HEAD)
+CORES  ?= $(shell grep processor /proc/cpuinfo | wc -l)
 
 # version
 DMD_VER = 2.109.0
@@ -34,8 +38,9 @@ DMD_URL = https://downloads.dlang.org/releases/2.x
 C += $(wildcard src/*.c*)
 H += $(wildcard src/*.h*)
 D += $(wildcard src/*.d*)
+J += $(wildcard ./*.json)
 F += $(wildcard lib/*.f*) lib/$(MODULE).ini
-S  = $(C) $(H) $(D) $(F)
+S += $(C) $(H) $(D) $(J) $(F)
 
 # cfg
 CFLAGS += -I$(INC) -I$(TMP)
@@ -62,6 +67,11 @@ tmp/format_d: $(D)
 .PHONY: doc
 doc:
 
+$(HOME)/doc/D/yazyk_programmirovaniya_d.pdf:
+	$(CURL) $@ https://www.k0d.cc/storage/books/D/yazyk_programmirovaniya_d.pdf
+$(HOME)/doc/D/Programming_in_D.pdf:
+	$(CURL) $@ http://ddili.org/ders/d.en/Programming_in_D.pdf
+
 # install
 .PHONY: install update ref gz
 install: doc ref gz $(DUB)
@@ -77,3 +87,34 @@ $(DUB): $(DISTR)/Linux/tools/$(DMD_DEB)
 	sudo dpkg -i $< && sudo touch $@
 $(DISTR)/Linux/tools/$(DMD_DEB):
 	$(CURL) $@ $(DMD_URL)/$(DMD_VER)/$(DMD_DEB)f
+
+# merge
+MERGE += Makefile README.md apt.txt LICENSE $(S)
+MERGE += .clang-format .editorconfig .doxygen .gitignore
+MERGE += .vscode bin doc lib inc src tmp ref
+
+.PHONY: dev
+dev:
+	git push -v
+	git checkout $@
+	git pull -v
+	git checkout shadow -- $(MERGE)
+
+.PHONY: shadow
+shadow:
+	git push -v
+	git checkout $@
+	git pull -v
+
+.PHONY: release
+release:
+	git tag $(NOW)-$(REL)
+	git push -v --tags
+	$(MAKE) shadow
+
+.PHONY: zip
+zip:
+	git archive \
+		--format zip \
+		--output $(TMP)/$(MODULE)_$(NOW)_$(REL).src.zip \
+	HEAD
