@@ -49,7 +49,7 @@ CFLAGS += -I$(INC) -I$(TMP) -std=c++17
 .PHONY: all build run test
 all:
 	$(MAKE) run
-	$(MAKE) -C meta run
+# $(MAKE) -C meta run
 build: $(S)
 	$(BLD)
 run: $(S)
