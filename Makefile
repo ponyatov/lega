@@ -35,8 +35,8 @@ DMD_DEB = dmd_$(DMD_VER)-0_amd64.deb
 DMD_URL = https://downloads.dlang.org/releases/2.x
 
 # src
-C += $(wildcard src/*.c*)
-H += $(wildcard src/*.h*)
+C += $(wildcard src/*.c*) $(wildcard meta/src/*.c*)
+H += $(wildcard inc/*.h*) $(wildcard meta/inc/*.h*)
 D += $(wildcard src/*.d*)
 J += $(wildcard ./*.json)
 F += $(wildcard lib/*.f*) lib/$(MODULE).ini
