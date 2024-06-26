@@ -109,6 +109,7 @@ dev:
 	git checkout $@
 	git pull -v
 	git checkout shadow -- $(MERGE)
+	$(MAKE) doxy && git add -f docs
 
 .PHONY: shadow
 shadow:
