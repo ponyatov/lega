@@ -1,7 +1,7 @@
 /// @file
 /// @brief C++ generated code sample
 
-#include "lega.hpp"
+#include "main.hpp"
 
 int main(int argc, char *argv[]) {
     arg(0, argv[0]);

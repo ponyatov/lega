@@ -8,6 +8,7 @@
 #include <assert.h>
 
 /// @defgroup genc generated C++
+/// @brief sample code
 /// @{
 
 /// @brief program entry point

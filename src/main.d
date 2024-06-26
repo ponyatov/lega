@@ -1,3 +1,9 @@
+/// @file
+/// @brief `legaScript` engine
+
+/// @defgroup legas legaScript
+/// @brief homoiconic script language for source code generation and analysis
+
 import config;
 
 import std.stdio;

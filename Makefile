@@ -47,9 +47,9 @@ CFLAGS += -I$(INC) -I$(TMP)
 
 # all
 .PHONY: all build run test
-all: bin/$(MODULE)_cpp $(F)
-	$^
+all:
 	$(MAKE) run
+	$(MAKE) -C meta run
 build: $(S)
 	$(BLD)
 run: $(S)
@@ -66,7 +66,7 @@ tmp/format_d: $(D)
 	$(RUN) dfmt -- -i $? && touch $@
 
 # rule
-bin/$(MODULE)_cpp: $(C) $(H)
+bin/$(MODULE): $(C) $(H)
 	$(CXX) $(CFLAGS) -o $@ $(C) $(L)
 
 # doc
