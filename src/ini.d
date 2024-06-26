@@ -1,3 +1,6 @@
+/// @file
+/// @brief .ini & legaScript grammar & processing
+
 module ini;
 
 import vm : proc;

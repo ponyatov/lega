@@ -35,8 +35,8 @@ DMD_DEB = dmd_$(DMD_VER)-0_amd64.deb
 DMD_URL = https://downloads.dlang.org/releases/2.x
 
 # src
-C += $(wildcard src/*.c*)
-H += $(wildcard src/*.h*)
+C += $(wildcard src/*.c*) $(wildcard meta/src/*.c*)
+H += $(wildcard inc/*.h*) $(wildcard meta/inc/*.h*)
 D += $(wildcard src/*.d*)
 J += $(wildcard ./*.json)
 F += $(wildcard lib/*.f*) lib/$(MODULE).ini
@@ -47,7 +47,9 @@ CFLAGS += -I$(INC) -I$(TMP)
 
 # all
 .PHONY: all build run test
-all: run
+all:
+	$(MAKE) run
+	$(MAKE) -C meta run
 build: $(S)
 	$(BLD)
 run: $(S)
@@ -63,6 +65,10 @@ tmp/format_c: $(C) $(H)
 tmp/format_d: $(D)
 	$(RUN) dfmt -- -i $? && touch $@
 
+# rule
+bin/$(MODULE): $(C) $(H)
+	$(CXX) $(CFLAGS) -o $@ $(C) $(L)
+
 # doc
 .PHONY: doc
 doc:
@@ -71,6 +77,10 @@ $(HOME)/doc/D/yazyk_programmirovaniya_d.pdf:
 	$(CURL) $@ https://www.k0d.cc/storage/books/D/yazyk_programmirovaniya_d.pdf
 $(HOME)/doc/D/Programming_in_D.pdf:
 	$(CURL) $@ http://ddili.org/ders/d.en/Programming_in_D.pdf
+
+.PHONY: doxy
+doxy: .doxygen
+	rm -rf docs ; doxygen $< 1>/dev/null
 
 # install
 .PHONY: install update ref gz
@@ -90,8 +100,8 @@ $(DISTR)/Linux/tools/$(DMD_DEB):
 
 # merge
 MERGE += Makefile README.md apt.txt LICENSE $(S)
-MERGE += .clang-format .editorconfig .doxygen .gitignore
-MERGE += .vscode bin doc lib inc src tmp ref
+MERGE += .clang-format .editorconfig .doxygen .gitignore .stignore
+MERGE += .vscode bin doc lib inc src tmp ref meta
 
 .PHONY: dev
 dev:

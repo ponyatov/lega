@@ -1,0 +1,5 @@
+<map id="vm::file" name="vm::file">
+<area shape="rect" id="node1" title="file" alt="" coords="5,175,76,201"/>
+<area shape="rect" id="node2" href="$classvm_1_1io.html" title="input/output" alt="" coords="9,99,72,125"/>
+<area shape="rect" id="node3" href="$classvm_1_1obj.html" title="root object = generic attribute grammar AST node" alt="" coords="5,14,76,41"/>
+</map>

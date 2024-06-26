@@ -1,0 +1,5 @@
+<map id="vm::prim" name="vm::prim">
+<area shape="rect" id="node1" title="primitive" alt="" coords="5,80,87,107"/>
+<area shape="rect" id="node3" href="$classvm_1_1i.html" title="integer" alt="" coords="19,155,73,181"/>
+<area shape="rect" id="node2" href="$classvm_1_1obj.html" title="root object = generic attribute grammar AST node" alt="" coords="11,5,81,32"/>
+</map>

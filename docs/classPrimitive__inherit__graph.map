@@ -1,0 +1,8 @@
+<map id="Primitive" name="Primitive">
+<area shape="rect" id="node1" title=" " alt="" coords="89,80,171,107"/>
+<area shape="rect" id="node3" href="$classInt.html" title=" " alt="" coords="5,155,44,181"/>
+<area shape="rect" id="node4" href="$classNum.html" title=" " alt="" coords="69,155,122,181"/>
+<area shape="rect" id="node5" href="$classPtr.html" title=" " alt="" coords="146,155,186,181"/>
+<area shape="rect" id="node6" href="$classStr.html" title=" " alt="" coords="210,155,250,181"/>
+<area shape="rect" id="node2" href="$classObject.html" title="root object" alt="" coords="98,5,162,32"/>
+</map>
