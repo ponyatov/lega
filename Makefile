@@ -90,7 +90,7 @@ $(DISTR)/Linux/tools/$(DMD_DEB):
 
 # merge
 MERGE += Makefile README.md apt.txt LICENSE $(S)
-MERGE += .clang-format .editorconfig .doxygen .gitignore
+MERGE += .clang-format .editorconfig .doxygen .gitignore .stignore
 MERGE += .vscode bin doc lib inc src tmp ref
 
 .PHONY: dev

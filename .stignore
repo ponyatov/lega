@@ -1,0 +1,6 @@
+rc
+.git/**
+bin/**
+ref/**
+tmp/**
+**/node_modules/**
