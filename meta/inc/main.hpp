@@ -76,10 +76,67 @@ class Process : public Active {
 };
 class Function : public Active {};
 
+/// @defgroup io IO
+/// @{
+
 class IO : public Object {};
 class Path : public IO {};
 class Dir : public IO {};
 class File : public IO {};
+
+class Net : public IO {};
+class Socket : public Net {};
+
+/// @}
+
+/// @defgroup gui GUI
+/// @{
+
+class GUI : public IO {
+    void show();
+    void hide();
+};
+
+class Window : public GUI {
+    size_t width, heigh;
+};
+
+class Alert : public GUI {};
+class Menu : public GUI {};
+class StatusBar : public GUI {};
+class FileTree : public GUI {};
+class Button : public GUI {};
+class Radio : public GUI {};
+class Check : public GUI {};
+class Label : public GUI {};
+class Text : public GUI {};
+class Canvas : public GUI {};
+class Grid : public GUI {};
+class Point : public GUI {};
+class Line : public GUI {};
+class Rect : public GUI {};
+class Arc : public GUI {};
+class Icon : public GUI {
+    File image;
+};
+class Cursor : public GUI {
+    Icon icon;
+};
+class Tray : public GUI {
+    Icon icon;
+};
+class Form : public Window {};
+class MsgBox : public Form {};
+class FileSelector : public Form {
+    Path path;
+};
+class Layout : public GUI {};
+class Tab : public Layout {};
+class Group : public Layout {};
+class HGroup : public Group {};
+class VGroup : public Group {};
+class Table : public Layout {};
+/// @}
 /// @}
 
 /// @}
